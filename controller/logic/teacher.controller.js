@@ -49,7 +49,7 @@ exports.createTeacher = (req, res, next) => {
                 {
                     info: data
                 }
-            )
+            );
         });
     });
 };
@@ -72,12 +72,39 @@ exports.updateTeacher = (req, res, next) => {
                 }
             );
         }
-        res.status(201).json(
-            {
-                info: data
-            }
-        );
-        
+        if(req.body.olddocument != undefined){
+            let r = config.get("roles").teacher;
+            console.log("Old document:"+ req.body.olddocument);
+            let user = {
+                name: teacher.name,
+                lastname: teacher.lastname,
+                username: teacher.document,
+                password: helper.EncryptPassword(req.body.password),
+                role: r
+            };
+            userDto.update({username:req.body.olddocument}, user, (err, u) => {
+                if(err){
+                    return res.status(400).json(
+                        {
+                            error: err
+                        }
+                    );
+                }
+                notiHelper.sendSMS(teacher.phone);
+                return res.status(201).json(
+                    {
+                        info: data
+                    }
+                );
+            });
+
+        } else {
+            res.status(201).json(
+                {
+                    info: data
+                }
+            );
+        }
     });
 };
 
