@@ -9,7 +9,8 @@
         }
     },
     "secretKeys":{
-        "cryptojs": "syeqH@waLZN"
+        "cryptojs": "syeqH@waLZN",
+        "jwt": "ABC@2020"
     },
     "roles":{
         "student": 1,
