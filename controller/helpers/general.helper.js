@@ -21,7 +21,7 @@ exports.DecryptPassword= (cryptedPassword) => {
 exports.GenerateToken = (user) => {
     let secretKey = config.get("secretKeys").jwt;
     let token = jwt.sign({
-        exp: Math.floor(Date.now() / 1000) + (60 * 60),
+        exp: Math.floor(Date.now() / 1000) + config.get("sessionTime"),
         data: {
             username: user.username,
             id: user._id

@@ -17,7 +17,7 @@ exports.login = (req, res, next) => {
         if(data.length > 0){
             let pass = helper.DecryptPassword(data[0].password);
             //console.log("Password en BD :" + pass);
-            if(req.body.password){
+            if(req.body.password == pass){
                 tk = helper.GenerateToken(data[0]);
                 return res.status(200).json(
                     {
