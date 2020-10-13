@@ -28,8 +28,8 @@ const userRoutes = require("./routes/user.routes");
 userRoutes(app);
 
 //Token middleware
-tkFn = require("./middleware/verifyToken");
-app.use(tkFn)
+//tkFn = require("./middleware/verifyToken");
+//app.use(tkFn)
 
 //Student Routes Loading
 const studentRoutes = require("./routes/student.routes");
@@ -46,6 +46,14 @@ periodRoutes(app);
 //Course Routes Loading
 const courseRoutes = require("./routes/course.routes");
 courseRoutes(app);
+
+//Faculty Routes Loading
+const facultyRoutes = require("./routes/faculty.routes");
+facultyRoutes(app);
+
+//Program Routes Loading
+const programRoutes = require("./routes/program.routes");
+programRoutes(app);
 
 
 

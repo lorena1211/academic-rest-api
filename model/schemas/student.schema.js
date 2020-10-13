@@ -30,11 +30,13 @@ const studentSchema = new mongoose.Schema({
         type: "String",
         required: true
     }, 
-    career:{
-        type: "String",
+    program_id:{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "coll_program",
         required: true
+        
     }
-    
+
 });
 
 /** Schema exportation */
